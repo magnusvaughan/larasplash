@@ -16,11 +16,13 @@ class CreateWordTotalsTable extends Migration
         Schema::create('word_totals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('count');
+            $table->unsignedBigInteger('wordlist');
             $table->foreign('wordlist')
-            ->references('id')->on('wordlist')
+            ->references('id')->on('wordlists')
             ->onDelete('cascade');
+            $table->unsignedBigInteger('phrase');
             $table->foreign('phrase')
-            ->references('id')->on('phrase')
+            ->references('id')->on('phrases')
             ->onDelete('cascade');
         });
     }

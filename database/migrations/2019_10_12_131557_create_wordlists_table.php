@@ -16,7 +16,8 @@ class CreateWordlistsTable extends Migration
         Schema::create('wordlists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->dateTime('date');
-            $table->foreign('newspaper_id')
+            $table->unsignedBigInteger('newspaper');
+            $table->foreign('newspaper')
             ->references('id')->on('newspapers')
             ->onDelete('cascade');
         });
